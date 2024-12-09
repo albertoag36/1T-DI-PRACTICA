@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ListaDeTareas.MVVM.ViewModels"
+             x:Class="ListaDeTareas.MVVM.Views.TareaDetalleView"
+             Title="Detalle de Tarea">
+    <StackLayout Padding="20" Spacing="15">
+        <Label Text="Editar Tarea" FontSize="Large" FontAttributes="Bold" />
+
+        <Entry Placeholder="Nombre de la tarea"
+               Text="{Binding Tarea.nombre}" />
+
+        <StackLayout Orientation="Horizontal" Spacing="10">
+            <Label Text="Completada" VerticalOptions="Center" />
+            <Switch IsToggled="{Binding Tarea.completada}" />
+        </StackLayout>
+
+        <Picker Title="Nivel de prioridad"
+                SelectedIndex="{Binding Tarea.importancia, Mode=TwoWay}">
+            <Picker.Items>
+                <x:String>Sin prioridad</x:String>
+                <x:String>Prioridad baja</x:String>
+                <x:String>Prioridad media</x:String>
+                <x:String>Prioridad alta</x:String>
+            </Picker.Items>
+        </Picker>
+
+        <Button Text="Guardar Cambios"
+                Clicked="GuardarTarea" />
+
+        <Button Text="Eliminar Tarea"
+                Clicked="EliminarTarea" 
+                Command="{Binding EliminarTareaCommand}"/>
+    </StackLayout>
+</ContentPage>
+
